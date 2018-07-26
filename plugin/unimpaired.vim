@@ -283,6 +283,9 @@ call s:map('n', 'yox', ':set <C-R>=<SID>cursor_options()<CR><CR>')
 call s:map('n', '[o+', ':set cursorline cursorcolumn<CR>')
 call s:map('n', ']o+', ':set nocursorline nocursorcolumn<CR>')
 call s:map('n', 'yo+', ':set <C-R>=<SID>cursor_options()<CR><CR>')
+call s:map('n', '[ol', ':let b:syntastic_skip_checks=0<CR>:SyntasticCheck<CR>')
+call s:map('n', ']ol', ':let b:syntastic_skip_checks=1<CR>:SyntasticReset<CR>')
+call s:map('n', 'yol', ':let b:syntastic_skip_checks=<C-R>=(!exists("b:syntastic_skip_checks")) ? 0 : (b:syntastic_skip_checks == 1) ? 0 : 1 <CR><CR>:<C-R>=(b:syntastic_skip_checks) ? "SyntasticReset" : "SyntasticCheck"<CR><CR>')
 
 function! s:legacy_option_map(letter) abort
   let y = get(get(g:, 'nremap', {}), 'y', 'y')
