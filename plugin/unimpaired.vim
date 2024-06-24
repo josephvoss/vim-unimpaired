@@ -350,6 +350,9 @@ nmap <script> <Plug>(unimpaired-toggle)+  :<C-U>set <C-R>=<SID>CursorOptions()<C
 nmap <script> <Plug>(unimpaired-enable)f  :<C-U>let b:syntastic_skip_checks=0<CR>:SyntasticCheck<CR>
 nmap <script> <Plug>(unimpaired-disable)f :<C-U>let b:syntastic_skip_checks=1<CR>:SyntasticReset<CR>
 nmap <script> <Plug>(unimpaired-toggle)f  :<C-U>let b:syntastic_skip_checks=<C-R>=(!exists("b:syntastic_skip_checks")) ? 0 : (b:syntastic_skip_checks == 1) ? 0 : 1 <CR><CR>:<C-R>=(b:syntastic_skip_checks) ? "SyntasticReset" : "SyntasticCheck"<CR><CR>
+nmap <script> <Plug>(unimpaired-enable)y  :<C-U>set syntax<CR>
+nmap <script> <Plug>(unimpaired-disable)y :<C-U>set nosyntax<CR>
+nmap <script> <Plug>(unimpaired-toggle)y  :<C-U>if exists("g:syntax_on") <Bar> syntax off <Bar> else <Bar> syntax enable <Bar> endif<CR>
 
 function! s:ColorColumn(should_clear) abort
   if !empty(&colorcolumn)
